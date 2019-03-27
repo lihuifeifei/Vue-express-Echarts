@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "chart.js": "^2.8.0",
     "echarts": "^4.2.1",
+    "express": "^4.16.4",
     "vue": "^2.6.6",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",

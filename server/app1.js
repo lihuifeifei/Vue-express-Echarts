@@ -36,8 +36,14 @@ app.post('/submit', function (req, res) {
 //响应get请求
 app.get('/getdate',function(req, res) {
         // 返回下面数据
-        res.send('[{ "id":1, "data":2},{"id":2,"data":5},{"id":3,"data":1},{"id":4,"data":3},{"id":5,"data":2},{"id":6,"data":4},{"id":7,"data":11}]');
-       
+        res.send('[{ "time":1, "data":2},{"time":2,"data":5},{"time":3,"data":1},{"time":4,"data":3},{"time":5,"data":2},{"time":6,"data":4},{"time":7,"data":11}]');
+        // res.send('{ "time":1, "data":2},{"time":2,"data":5},{"time":3,"data":1},{"time":4,"data":3},{"time":5,"data":2},{"time":6,"data":4},{"time":7,"data":11}');
+        // res.send('[{ "is":1, "data":2},{"time":2,"data":5},{"time":3,"data":1},{"time":4,"data":3},{"time":5,"data":2},{"time":6,"data":4},{"time":7,"data":11}]');
+        // res.send('[{ "time":1, "data":2},{"id":2,"data":5},{"time":3,"data":1},{"time":4,"data":3},{"time":5,"data":2},{"time":6,"data":4},{"time":7,"data":11}]');
+        
+        
+        
+        
     }
 
 )

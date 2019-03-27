@@ -2,12 +2,11 @@
   <div class="hello">
       <section>
           <div id="container_demo" >
-              <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
               <a class="hiddenanchor" id="toregister"></a>
               <a class="hiddenanchor" id="tologin"></a>
               <div id="wrapper">
                   <div id="login" class="animate form">
-                      <!--<form  action="#" autocomplete="on">-->
+                      <form>
                           <h1>Form</h1>
                           <p>
                               <label for="username" class="uname" data-icon="t" > Title </label>
@@ -39,16 +38,55 @@ export default {
     },
 //    点击发送post请求
     methods:{
-        submitForm(){
+
+        //验证url，isURL函数
+
+        isURL(str_url) {
+            var strRegex = "(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]";
+            var re = new RegExp(strRegex);
+            return re.test(str_url);
+        },
+
+        //按钮点击事件
+        submitForm(e){
 
             var title = this.title;
             var url = this.url;
+
+            //验证表单数据是否为空
+            if(!title){
+                alert('请输入标题!');
+                return false;
+            }
+
+            if(!url){
+                alert('请输入url');
+                return false;
+            }
+
+            //验证url格式，调用isURL方法
+            if(this.isURL(url) == false){
+                alert('url格式错误，请重新输入');
+                e.preventDefault();
+                return false;
+            }
+
+            //验证通过，发送post请求
             this.$axios.post('/submit', {
                 title: title,
                 url: url
-            }).then((res) => {
+            })
+                .then((res) => {
                 console.log(res);
-            });
+            })
+                .catch(()=>{console.error()});
+
+            // 阻止页面刷新,取消默认行为
+            e.preventDefault();
+
+            //发送post请求之后，清空输入框数据
+            this.title = " ";
+            this.url = " ";
         }
     }
 };
